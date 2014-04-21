@@ -29,7 +29,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Pegelcraft</title>
-	<link rel="stylesheet" href="css/yeti.bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/sticky-footer.css">
 	<style type="text/css">
 		.table thead th {
@@ -138,6 +138,8 @@
         <p class="text-muted">This page uses <a href="https://github.com/xPaw/PHP-Minecraft-Query">PHP Minecraft Query</a> Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a> by <a href="http://xpaw.ru/">xPaw</a>. Main part of this site is written by <a href="http://xpaw.ru/">xPaw</a>.</p>
       </div>
     </div>
-
+<!-- Javascript -->
+<script href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<!-- End Javascript -->
 </body>
 </html>
