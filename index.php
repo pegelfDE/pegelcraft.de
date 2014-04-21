@@ -7,7 +7,7 @@
 	Error_Reporting( E_ALL | E_STRICT );
 	Ini_Set( 'display_errors', true );
 	
-	require __DIR__ . 'PHP-Minecraft-Query/MinecraftQuery.class.php';
+	require __DIR__ . '/PHP-Minecraft-Query/MinecraftQuery.class.php';
 	
 	$Timer = MicroTime( true );
 	
