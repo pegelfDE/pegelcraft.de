@@ -17,6 +17,7 @@ $mysqli->close();
 	<title>Pegelcraft</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/sticky-footer.css">
+        <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
     <div class="navbar navbar-default navbar-static-top" role="navigation">
