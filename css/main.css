@@ -5,3 +5,12 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+.table thead th {
+  background-color: #428BCA;
+  border-color: #428BCA !important;
+  color: #FFF;
+}
+
+.table {
+  background-color: #FFF;
+}
