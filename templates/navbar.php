@@ -49,7 +49,7 @@ $mysqli->close();
           </ul>
         </li>
 <?php else: ?>
-        <li><a href="<?php echo $nav_Parent['link']; ?>"><?php echo $nav_Parent['title']; ?></a></li>
+        <li<?php if ( $page['navbarid'] == $nav_Parent['id'] ) { echo ' class="active"'; } ?>><a href="<?php echo $nav_Parent['link']; ?>"><?php echo $nav_Parent['title']; ?></a></li>
 <?php endif; ?>
 <?php endforeach; ?>
       </ul>

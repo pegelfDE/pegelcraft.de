@@ -5,11 +5,6 @@
 	<title>Pegelcraft</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<style type="text/css">
-		.table thead th {
-			background-color: #428BCA;
-			border-color: #428BCA !important;
-			color: #FFF;
-		}
 		html,body,iframe {
 			min-height:100%;
 			height:auto !important;
@@ -42,7 +37,7 @@
         </div><!--/.nav-collapse -->
       </div>
     </div>
-<iframe src="http://livemap.pegelf.de" width="100%" height="100%"  frameborder="10" vspace="0" hspace="0"
+<iframe src="//livemap.pegelf.de" width="100%" height="100%"  frameborder="10" vspace="0" hspace="0"
 marginwidth="0" marginheight="0" scrolling="no" noresize></iframe>
 <!-- Javascript -->
 <script href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

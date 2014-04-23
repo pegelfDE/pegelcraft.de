@@ -3,6 +3,8 @@ include "config.php";
 include "lib/meldung.php";
 include "lib/fetch_all_assoc.php";
 
+$page['navbarid'] = 2;
+
 // MySQL
 $mysqli = new mysqli($mysql_info['hostname'], $mysql_info['username'], $mysql_info['password'], $mysql_info['database']);
 $mysqli->set_charset("utf8");
