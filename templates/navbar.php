@@ -1,7 +1,7 @@
 <?php
 $mysqli = new mysqli($mysql_info['hostname'], $mysql_info['username'], $mysql_info['password'], $mysql_info['database']);
 $mysqli->set_charset("utf8");
-$nav_parents = $mysqli->query("SELECT * FROM navbar WHERE parent = 0 AND visible = 1");
+$nav_parents = $mysqli->query("SELECT * FROM navbar WHERE parent = 0 AND visible = 1 ORDER BY position ASC");
 $nav_parent_row = fetch_all_assoc($nav_parents, array('id'));
 $mysqli->close();
 ?>
