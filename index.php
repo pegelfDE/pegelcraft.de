@@ -23,47 +23,12 @@
 	}
 	
 	$Timer = Number_Format( MicroTime( true ) - $Timer, 4, '.', '' );
-?>
-<!DOCTYPE html>
-<html lang="de">
-<head>
-	<meta charset="utf-8">
-	<title>Pegelcraft</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/sticky-footer.css">
-	<style type="text/css">
-		.table thead th {
-			background-color: #428BCA;
-			border-color: #428BCA !important;
-			color: #FFF;
-		}
-	</style>
-</head>
 
-<body>
-    <div class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Pegelcraft</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="map.php">Map</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://pegelf.de">pegelf.de</a></li>
-            <li class="active"><a href="#">pegelcraft.de</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+$page['navbarid'] = 1;
+include "config.php";
+include "lib/fetch_all_assoc.php";
+include "templates/navbar.php";
+?>
     <div class="container">
 
 <?php if( isset( $Exception ) ): ?>
