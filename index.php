@@ -24,85 +24,86 @@
 	
 	$Timer = Number_Format( MicroTime( true ) - $Timer, 4, '.', '' );
 
+// Check if we have information
+if (($Info = $Query->GetInfo()) == false) {
+	$nodatareceived = true;
+}
+
+// Decide about Playerpanels color
+if (isset($Exception) OR isset($nodatareceived)) {
+	$player_panel_class = "panel-danger";
+} elseif ($Info['Players'] < 1) {
+	$player_panel_class = "panel-warning";
+} else {
+	$player_panel_class = "panel-success";
+}
+
 $page['navbarid'] = 1;
 include "config.php";
 include "lib/fetch_all_assoc.php";
+include "lib/bbcodes.php";
 include "templates/navbar.php";
 ?>
-    <div class="container">
-
-<?php if( isset( $Exception ) ): ?>
-		<div class="panel panel-primary">
-			<div class="panel-heading"><?php echo htmlspecialchars( $Exception->getMessage( ) ); ?></div>
-			<p><?php echo nl2br( $e->getTraceAsString(), false ); ?></p>
-		</div>
-<?php else: ?>
-		<div class="row">
-			<div class="col-sm-6">
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th colspan="2">Server Info <em>(queried in <?php echo $Timer; ?>s)</em></th>
-						</tr>
-					</thead>
-					<tbody>
-<?php if( ( $Info = $Query->GetInfo( ) ) !== false ): ?>
-<?php $Info["HostName"] = "pegelcraft"; ?>
-<?php foreach( $Info as $InfoKey => $InfoValue ): ?>
-						<tr>
-							<td><?php echo htmlspecialchars( $InfoKey ); ?></td>
-							<td><?php
-	if( Is_Array( $InfoValue ) )
-	{
-		echo "<pre>";
-		print_r( $InfoValue );
-		echo "</pre>";
-	}
-	else
-	{
-		echo htmlspecialchars( $InfoValue );
-	}
-?></td>
-						</tr>
-<?php endforeach; ?>
-<?php else: ?>
-						<tr>
-							<td colspan="2">No information received</td>
-						</tr>
-<?php endif; ?>
-					</tbody>
-				</table>
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="panel panel-default"> <!-- Short description of pegelcraft -->
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			</div>
-			<div class="col-sm-6">
-				<table class="table table-bordered table-striped">
-					<thead>
-						<tr>
-							<th>Players</th>
-						</tr>
-					</thead>
-					<tbody>
-<?php if( ( $Players = $Query->GetPlayers( ) ) !== false ): ?>
-<?php foreach( $Players as $Player ): ?>
-						<tr>
-							<td><?php echo htmlspecialchars( $Player ); ?></td>
-						</tr>
+		</div>
+		<div class="col-md-4">
+			<div class="panel <?php echo $player_panel_class; ?>">
+				<div class="panel-heading">Momentan online:</div>
+				<table class="table table-hover">
+<?php if(($Players = $Query->GetPlayers()) !== false): ?>
+<?php foreach($Players as $Player): ?>
+					<tr><td><?php echo $Player; ?></td></tr>
 <?php endforeach; ?>
 <?php else: ?>
-						<tr>
-							<td>No players in da house</td>
-						</tr>
+					<tr><td>Niemand da :(</td></tr>
 <?php endif; ?>
-					</tbody>
 				</table>
 			</div>
 		</div>
-<?php endif; ?>
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					News
+				</div>
+<?php
+$mysqli = new mysqli($mysql_info['hostname'], $mysql_info['username'], $mysql_info['password'], "1_forum");
+$mysqli->set_charset("utf8");
+$threads = $mysqli->query("SELECT threadID FROM wbb1_1_thread WHERE boardID = 105")->fetch_all();
+// Extreme dirty PHP Code
+$query = "SELECT postID,threadID,userID,username,subject,message,time,isDeleted,isDisabled FROM `wbb1_1_post` WHERE"
+foreach ($threads as $Thread) {
+	$query = $query . " threadID = " . $Thread['0'] . " OR";
+}
+$query = $query . "DER BY time DESC";
+// Until here
+$news = $mysqli->query($query);
+$news_row = fetch_all_assoc($news, array('postID'));
+$mysqli->close();
+?>
+				<div class="panel-body">
+<?php foreach($news_row as $News): ?>
+<?php if($News['subject'] == '' OR $News['threadID'] == '1523') { continue; } ?>
+<?php $News['message'] = str_replace("\n", "<br>", $News['message']); ?>
+					<a href="//pegelf.de/index.php?page=Thread&postID=<?php echo $News['postID']; ?>" id="<?php echo $News['postID']; ?>"><?php echo $News['subject']; ?></a>
+					<hr>
+					<?php echo bbcode_parse($BBHandler, $News['message']) ?>
+					<hr>
+<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
 	</div>
-    <div id="footer">
-      <div class="container">
-        <p class="text-muted">This page uses <a href="https://github.com/xPaw/PHP-Minecraft-Query">PHP Minecraft Query</a> Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a> by <a href="http://xpaw.ru/">xPaw</a>. Main part of this site is written by <a href="http://xpaw.ru/">xPaw</a>.</p>
-      </div>
-    </div>
+</div>
+<div id="footer">
+	<div class="container">
+		<p class="text-muted">This page uses <a href="https://github.com/xPaw/PHP-Minecraft-Query">PHP Minecraft Query</a> Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">CC BY-NC-SA 3.0</a> by <a href="http://xpaw.ru/">xPaw</a>. Main part of this site is written by <a href="http://xpaw.ru/">xPaw</a>.</p>
+	</div>
+</div>
 <!-- Javascript -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
