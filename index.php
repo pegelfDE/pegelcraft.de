@@ -75,7 +75,7 @@ $mysqli = new mysqli($mysql_info['hostname'], $mysql_info['username'], $mysql_in
 $mysqli->set_charset("utf8");
 $threads = $mysqli->query("SELECT threadID FROM wbb1_1_thread WHERE boardID = 105")->fetch_all();
 // Extreme dirty PHP Code
-$query = "SELECT postID,threadID,userID,username,subject,message,time,isDeleted,isDisabled FROM `wbb1_1_post` WHERE"
+$query = "SELECT postID,threadID,userID,username,subject,message,time,isDeleted,isDisabled FROM `wbb1_1_post` WHERE";
 foreach ($threads as $Thread) {
 	$query = $query . " threadID = " . $Thread['0'] . " OR";
 }
