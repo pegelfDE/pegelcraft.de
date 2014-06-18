@@ -7,7 +7,6 @@
 	<style type="text/css">
 		html,body,iframe {
 			min-height:100%;
-			height:auto !important;
 			height:100%;
 		}
 	</style>
