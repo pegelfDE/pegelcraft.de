@@ -57,6 +57,7 @@ $mysqli->close();
       <ul class="nav navbar-nav navbar-right">
         <li><a href="//pegelf.de/">pegelf.de</a></li>
         <li class="active"><a href="#">pegelcraft.de</a></li>
+        <li><a href="https://plus.google.com/113075010590062347117" rel="publisher">Google+</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
