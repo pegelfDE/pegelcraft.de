@@ -16,7 +16,7 @@ body {
   background-color: #FFF;
 }
 
-iframe {
+html, body, iframe {
   min-height: 100%;
   height: 100%;
 }
