@@ -48,7 +48,7 @@ include "templates/navbar.php";
 	<div class="row">
 		<div class="col-md-8">
 			<div class="panel panel-default"> <!-- Short description of pegelcraft -->
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				Pegelcraft ist der Minecraft-Server von der <a href="//pegelf.de">Pegelf.de</a> Community.
 			</div>
 		</div>
 		<div class="col-md-4">
@@ -71,6 +71,7 @@ include "templates/navbar.php";
 					News
 				</div>
 <?php
+/*
 $mysqli = new mysqli($mysql_info['hostname'], $mysql_info['username'], $mysql_info['password'], "1_forum");
 $mysqli->set_charset("utf8");
 $threads = $mysqli->query("SELECT threadID FROM wbb1_1_thread WHERE boardID = 105")->fetch_all();
@@ -84,16 +85,18 @@ $query = $query . "DER BY time DESC";
 $news = $mysqli->query($query);
 $news_row = fetch_all_assoc($news, array('postID'));
 $mysqli->close();
+*/
 ?>
 				<div class="panel-body">
-<?php foreach($news_row as $News): ?>
-<?php if($News['subject'] == '' OR $News['threadID'] == '1523') { continue; } ?>
-<?php $News['message'] = str_replace("\n", "<br>", $News['message']); ?>
-					<a href="//pegelf.de/index.php?page=Thread&postID=<?php echo $News['postID']; ?>" id="<?php echo $News['postID']; ?>"><?php echo $News['subject']; ?></a>
+<?php // foreach($news_row as $News): ?>
+<?php // if($News['subject'] == '' OR $News['threadID'] == '1523') { continue; } ?>
+<?php // $News['message'] = str_replace("\n", "<br>", $News['message']); ?>
+<?php /*					<a href="//pegelf.de/index.php?page=Thread&postID=<?php echo $News['postID']; ?>" id="<?php echo $News['postID']; ?>"><?php echo $News['subject']; ?></a>
 					<hr>
 					<?php echo bbcode_parse($BBHandler, $News['message']) ?>
-					<hr>
-<?php endforeach; ?>
+					<hr> */ ?>
+<?php // endforeach; ?>
+					Für die aktuellen News rund um Pegelcraft besuche die <a href="//pegelf.de/board88-minecraft/board104-pegelcraft-unser-minecraft-server">Foren</a> (Dies wird irgendwann(tm) auch mal hier erscheinen).
 				</div>
 			</div>
 		</div>
