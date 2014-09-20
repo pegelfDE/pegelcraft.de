@@ -14,6 +14,9 @@ $mysqli->close();
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/sticky-footer.css">
 	<link rel="stylesheet" href="css/main.css">
+	<?php if ($page['navbarid'] == 3): ?>
+	<link rel="stylesheet" href="css/map.css">
+	<?php endif; ?>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
