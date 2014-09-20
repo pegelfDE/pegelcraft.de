@@ -1,5 +1,5 @@
 <?php
-	define( 'MQ_SERVER_ADDR', '46.4.149.14' );
+	define( 'MQ_SERVER_ADDR', '5.9.218.100' );
 	define( 'MQ_SERVER_PORT', 25565 );
 	define( 'MQ_TIMEOUT', 1 );
 	
