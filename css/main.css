@@ -4,6 +4,7 @@ body {
   -webkit-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
 }
 .table thead th {
   background-color: #428BCA;
