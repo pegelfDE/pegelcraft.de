@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 include "lib/fetch_all_assoc.php";
-$page['navbarid'] = 2;
+$page['navbarid'] = 3;
 include "templates/navbar.php";
 ?>
 <iframe src="//livemap.pegelf.de" width="100%" height="100%"  frameborder="10" vspace="0" hspace="0"
