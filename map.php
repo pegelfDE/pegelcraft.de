@@ -1,5 +1,6 @@
 <?php
 include "config.php";
+include "lib/fetch_all_assoc.php";
 $page['navbarid'] = 2;
 include "templates/navbar.php";
 ?>
